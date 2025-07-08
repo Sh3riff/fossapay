@@ -25,11 +25,18 @@ src/
   minimalAuth/              # Simple admin auth guard
   quotes/                   # Quotes entity, service, and module
 ```
-## [Live Demo Link](https://google.com)
+
+## [Live Demo API](https://fossapay.deploy.name.ng/)
 ```
 For the admin route authentication, Set http header
 
 Authorization = 'never-use-in-production'
+
+```
+
+## [Api Docs](https://fossapay.deploy.name.ng/docs) 
+```
+Also available at /docs in you environment http://localhost:3000/docs
 
 ```
 
@@ -49,20 +56,21 @@ cp .env.template .env
 ## Getting Started
 
 ### With Docker
+Build and run with Docker Compose
 #### Prerequisites
 - Docker
 - .env (refer to [docker-compose.yml](/docker-compose.yml) for database credentials)
+#### Run
+```
+npm run docker
+```
 
-
-
-
-
-### Prerequisites
-
+### With Node
+#### Prerequisites
 - Node.js >= 20.x
 - npm >= 10.x
-- MySQL 8.x
-- Docker (optional)
+- MySQL 8.x (make sure you database is running)
+- .env
 
 ### Installation
 
@@ -115,42 +123,16 @@ npm run docker
   }
   ```
 
-### Admin
-
+### Admin (Authenticated)
+**Headers:**  
+`Authorization: <DEMO_ADMIN_CREDENTIAL> i.e 'never-use-in-production'`
 - `GET /admin/quotes`  
   List all quotes (rate-limited, optionally protected by admin guard).
 
 - `GET /admin/quotes/download`  
-  Download all quotes as CSV.  
-  **Headers:**  
-  `Authorization: <DEMO_ADMIN_CREDENTIAL>`
-
-## Testing
-
-### Unit Tests
-
-```bash
-npm run test
-```
-
-### End-to-End Tests
-
-```bash
-npm run test:e2e
-```
-
-### Test Coverage
-
-```bash
-npm run test:cov
-```
-
-## Deployment
-
-See [NestJS deployment docs](https://docs.nestjs.com/deployment) for best practices.
+  Download all quotes as CSV. 
 
 ## License
-
 MIT
 
 ---
