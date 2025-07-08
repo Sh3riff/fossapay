@@ -29,7 +29,7 @@ import { APP_GUARD } from '@nestjs/core';
       synchronize: true,
     }),
     ThrottlerModule.forRoot({
-      throttlers: [{ ttl: 60000, limit: 10 }],
+      throttlers: [{ ttl: 60000, limit: 2 }],
     }),
     QuotesModule,
   ],
