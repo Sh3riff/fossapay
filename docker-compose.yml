@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: fossapay
+      MYSQL_USER: fossapay
+      MYSQL_PASSWORD: fossapay
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  app:
+    build: .
+    container_name: fossapay
+    restart: always
+    depends_on:
+      - mysql
+    env_file: .env
+    ports:
+      - "3000:3000"
+    command: npm run start:prod
+
+volumes:
+  mysql_data:
