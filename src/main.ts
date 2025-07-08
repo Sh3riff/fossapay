@@ -8,6 +8,9 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Fossapay')
     .setDescription('The Fossapay API documentation')
+    .addServer('https://fossapay.deploy.name.ng') // Replace with your actual server URL
+    .addServer('http://localhost:3000') // Replace with your actual server URL
+    .addBearerAuth()
     .setVersion('1.0.0')
     .addTag('fossapay')
     .build();

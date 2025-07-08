@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post, Res, UseGuards } from '@nestjs/common';
-import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { Response } from 'express';
 import { CreateQuoteDto } from './app.dto';
 import { AdminAuthGuard } from './minimalAuth/admin-auth.guard';
@@ -31,6 +31,7 @@ export class AppController {
   }
 
   @UseGuards(AdminAuthGuard)
+  @ApiBearerAuth()
   @Get('/admin/quotes')
   @ApiResponse({
     status: 200,
@@ -43,6 +44,7 @@ export class AppController {
   }
 
   @UseGuards(AdminAuthGuard)
+  @ApiBearerAuth()
   @Get('/admin/quotes/download')
   @ApiOperation({ summary: 'Admin Download Quotes as .csv file' })
   async downloadQuotes(@Res() res: Response) {
